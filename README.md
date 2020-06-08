@@ -12,7 +12,7 @@ Following is the feature-list that may be implemented in the future (marked ones
 
 - [ ] Unread Email,
 
-- [ ] Todo List,
+- [x] Todo List,
 
 - [ ] Calendar/Schedule,
 
