@@ -10,31 +10,31 @@ This is a work from Home app. Implemented in `electron (JS)` using `HTML-CSS` @ 
 
 Following is the feature-list that may be implemented in the future (marked ones are completed):
 
-Feature | Status
-:------------ | :-------------
-Todo List | :heavy_check_mark:
-Unread Email | :x:
-Calendar/Schedule | :x:
-Upcomming Meetings | :x:
-Creating Meetings | :x:
-Sending Meetings inivitations | :x:
-Away From Keyboard (AFK) button | :x:
-Work Start/End button | :x:
-Set online Status | :x:
-See who is online | :x:
-Progress boards, Daily Activity | :x:
+Feature | Back-End |  Front-End
+:------------ | :------------- | :-------------
+Todo List | :heavy_check_mark: | :x:
+Unread Email | :heavy_check_mark: | :x:
+Calendar/Schedule | :heavy_check_mark: | :x:
+Upcomming Meetings | :x: | :x:
+Creating Meetings | :x: | :x:
+Sending Meetings inivitations | :x: | :x:
+Away From Keyboard (AFK) button | :x: | :x:
+Work Start/End button | :x: | :x:
+Set online Status | :x: | :x:
+See who is online | :x: | :x:
+Progress boards, Daily Activity | :x: | :x:
 
 ## Home Section
 
-Feature | Status
-:------------ | :-------------
-Exercise | :x:
-Available free guys | :x:
-Call anyone | :x:
-My Movie List | :x:
-ScreenTime Timer | :x:
-See who is free and up for a chat | :x:
-Chat Rooms (X flowers alternate) | :x:
+Feature | Front-End | Back-End
+:------------ | :------------- | :-------------
+Exercise | :x: | :x:
+Available free guys | :x: | :x:
+Call anyone | :x: | :x:
+My Movie List | :x: | :x:
+ScreenTime Timer | :x: | :x:
+See who is free and up for a chat | :x: | :x:
+Chat Rooms (X flowers alternate) | :x: | :x:
 
 ## Contribute
 
