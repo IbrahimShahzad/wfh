@@ -10,7 +10,7 @@ This is a work from Home app. Implemented in `electron (JS)` using `HTML-CSS` @ 
 
 Following is the feature-list that may be implemented in the future (marked ones are completed):
 
-Feature | Status 
+Feature | Status
 :------------ | :-------------
 Todo List | :heavy_check_mark:
 Unread Email | :x:
@@ -24,10 +24,9 @@ Set online Status | :x:
 See who is online | :x:
 Progress boards, Daily Activity | :x:
 
-
 ## Home Section
 
-Feature | Status 
+Feature | Status
 :------------ | :-------------
 Exercise | :x:
 Available free guys | :x:
