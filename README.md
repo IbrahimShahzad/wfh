@@ -9,27 +9,44 @@ This is a work from Home app. Implemented in `electron (JS)` using `HTML-CSS` @ 
 ## Work Section
 
 Following is the feature-list that may be implemented in the future (marked ones are completed):
--[] Unread Email,
--[] Todo List,
--[] Calendar/Schedule,
--[] Upcomming Meetings,
--[] Creating Meetings,
--[] Sending Meetings inivitations
--[] Away From Keyboard (AFK) button
--[] Work Start button / Work End button
--[] Set online Status
--[] See who is online
--[] Progress boards, Daily Activity boards for tracking work
+
+-[ ] Unread Email,
+
+-[ ] Todo List,
+
+-[ ] Calendar/Schedule,
+
+-[ ] Upcomming Meetings,
+
+-[ ] Creating Meetings,
+
+-[ ] Sending Meetings inivitations
+
+-[ ] Away From Keyboard (AFK) button
+
+-[ ] Work Start button / Work End button
+
+-[ ] Set online Status
+
+-[ ] See who is online
+
+-[ ] Progress boards, Daily Activity boards for tracking work
 
 ## Home Section
 
--[] Exercise
--[] Available free guys
--[] call anyone
--[] My Movie List
--[] ScreenTime Timer
--[] See who is free and up for a chat
--[] Chat Rooms (X flowers alternate)
+-[ ] Exercise,
+
+-[ ] Available free guys,
+
+-[ ] call anyone,
+
+-[ ] My Movie List,
+
+-[ ] ScreenTime Timer,
+
+-[ ] See who is free and up for a chat,
+
+-[ ] Chat Rooms (X flowers alternate)
 
 ## Contribute
 
