@@ -14,7 +14,7 @@ Feature | Status
 :------------ | :-------------
 Todo List | :heavy_check_mark:
 Unread Email | :x:
-Calendar/Schedule | :x:
+Calendar/Schedule | :heavy_check_mark:
 Upcomming Meetings | :x:
 Creating Meetings | :x:
 Sending Meetings inivitations | :x:
