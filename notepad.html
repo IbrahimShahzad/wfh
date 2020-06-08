@@ -1,0 +1,119 @@
+<html>
+  <head>
+    <title>Text Editor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css"> -->
+    <!-- <link rel="stylesheet" href="notepad.css" /> -->
+
+
+    <!--Import Google Icon Font-->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <link type="text/css" rel="stylesheet" href="css/notepad.css"  />
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+<body>
+  <!-- <nav>
+    <div class="nav-wrapper">
+        <a class="brand-logo center">
+            Work From Home
+        </a>
+    </div>
+  </nav> -->
+  <!-- <a class="btn-floating btn-large waves-effect waves-light red"><i class="material-icons">add</i></a>
+  <div id="heading" contenteditable="false"></div>
+  <div class="content-wrapper">
+    <div id="content" contenteditable="true"></div>
+    <ul class="collection" id="content">
+        <li class="collection-item" contenteditable="true">Insert here</li>
+      </ul>
+    <button class="btn primary">Add Item</button>
+  </div> -->
+  <div id="myDIV" class="header">
+    <!-- <h2>My To Do List</h2> -->
+    <input type="text" id="myInput" placeholder="Title...">
+    <!-- <span onclick="newElement()" class="btn primary">Add</span> -->
+    <a class="btn-floating btn-large waves-effect waves-light red" onclick="newElement()"><i class="material-icons">add</i></a>
+  </div>
+  
+  <ul id="myUL">
+    <!-- <li>Hit the gym</li>
+    <li class="checked">Pay bills</li>
+    <li>Meet George</li>
+    <li>Buy eggs</li>
+    <li>Read a book</li>
+    <li>Organize office</li> -->
+  </ul> 
+  
+
+  <script>
+    // document.getElementById("heading").innerHTML = localStorage["title"] || "ToDo List"; // default text
+    // document.getElementById("myUL").innerHTML = "";
+    document.getElementById("myUL").innerHTML = localStorage["list"] || ""; // default text
+
+    setInterval(function() {
+    // fuction that is saving the innerHTML of the div
+    localStorage["title"] = "List"; // heading div
+    localStorage["list"] = document.getElementById("myUL").innerHTML; // content div
+     }, 1000);
+    // Create a "close" button and append it to each list item
+var myNodelist = document.getElementsByTagName("LI");
+var i;
+for (i = 0; i < myNodelist.length; i++) {
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  myNodelist[i].appendChild(span);
+}
+
+// Click on a close button to hide the current list item
+var close = document.getElementsByClassName("close");
+var i;
+for (i = 0; i < close.length; i++) {
+  close[i].onclick = function() {
+    var div = this.parentElement;
+    div.style.display = "none";
+  }
+}
+
+// Add a "checked" symbol when clicking on a list item
+var list = document.querySelector('ul');
+list.addEventListener('click', function(ev) {
+  if (ev.target.tagName === 'LI') {
+    ev.target.classList.toggle('checked');
+  }
+}, false);
+
+// Create a new list item when clicking on the "Add" button
+function newElement() {
+  var li = document.createElement("li");
+  var inputValue = document.getElementById("myInput").value;
+  var t = document.createTextNode(inputValue);
+  li.appendChild(t);
+  if (inputValue === '') {
+    alert("You must write something!");
+  } else {
+    document.getElementById("myUL").appendChild(li);
+  }
+  document.getElementById("myInput").value = "";
+
+  var span = document.createElement("SPAN");
+  var txt = document.createTextNode("\u00D7");
+  span.className = "close";
+  span.appendChild(txt);
+  li.appendChild(span);
+
+  for (i = 0; i < close.length; i++) {
+    close[i].onclick = function() {
+      var div = this.parentElement;
+      div.style.display = "none";
+    }
+  }
+} 
+  </script>
+  </body>
+</html>
