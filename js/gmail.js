@@ -1,29 +1,31 @@
 var fs = require('fs');
 var readline = require('readline');
 var {google} = require('googleapis');
- 
+
 // If modifying these scopes, delete your previously saved credentials
 // at TOKEN_DIR/gmail-nodejs.json
 var SCOPES = ['https://www.googleapis.com/auth/gmail.readonly'];
- 
+
 // Change token directory to your system preference
 // var TOKEN_DIR = ('credentials/');
 // var TOKEN_PATH = TOKEN_DIR + 'gmail-nodejs.json';
 var TOKEN_PATH = 'gmailToken.json';
 var gmail = google.gmail('v1');
- 
-// Load client secrets from a local file.
-fs.readFile('credentials/gmailCredentials.json', function processClientSecrets(err, content) {
-  if (err) {
-    console.log('Error loading client secret file: ' + err);
-    return;
-  }
-  // Authorize a client with the loaded credentials, then call the
-  // Gmail API.
-//   authorize(JSON.parse(content), listLabels);
-  authorize(JSON.parse(content), getRecentEmail);
-});
- 
+runGmail();
+function runGmail(){
+    // Load client secrets from a local file.
+    fs.readFile('credentials/gmailCredentials.json', function processClientSecrets(err, content) {
+    if (err) {
+        console.log('Error loading client secret file: ' + err);
+        return;
+    }
+    // Authorize a client with the loaded credentials, then call the
+    // Gmail API.
+    //   authorize(JSON.parse(content), listLabels);
+    authorize(JSON.parse(content), getRecentEmail);
+    });
+}
+
 /**
  * Create an OAuth2 client with the given credentials, and then execute the
  * given callback function.
@@ -127,12 +129,17 @@ function listLabels(auth) {
  */
 function getRecentEmail(auth) {
     // Only get the recent email - 'maxResults' parameter
-    gmail.users.messages.list({auth: auth, userId: 'me', maxResults: 10,}, function(err, response) {
+    // var ul = document.createElement("ul");
+    // var ul = document.getElementById("gmailUL");
+    // ul.innerHTML = " ";
+    document.getElementById("gmailT").innerHTML = "";
+    gmail.users.messages.list({auth: auth, userId: 'me', maxResults: 5,}, function(err, response) {
         if (err) {
             console.log('The API returned an error: ' + err);
             return;
         }
  
+        
         // Get the message id which we will need to retreive tha actual message next.
         response['data']['messages'].forEach(element => {
             var message_id = element['id'];
@@ -144,24 +151,46 @@ function getRecentEmail(auth) {
                 }
                 response.data.labelIds.forEach(element => {
                     if (element=='UNREAD'){
-                        // console.log(response['data']['snippet']);
-                        // from subject time snippet 
-                        console.log(response.data.snippet);    
+                        var subject="";
+                        var from="";
+                        var date="";
+                        // console.log(response.data);
+                        response.data.payload.headers.forEach(element => {
+                            if (element['name']=='From'){
+                                from = element['value'];
+                            }
+                            if (element['name']=='Subject'){
+                                subject = element['value'];
+                            }
+                            if (element['name']=='Date'){
+                                date = element['value'];
+                            }
+                        });
+
+                        var snippet = response.data.snippet;
+                        var mailText = "From:" + from + " Subject: " + subject;
+
+                        var tr = document.createElement("tr");
+                        var tdFrom = document.createElement("td");
+                        tdFrom.appendChild(document.createTextNode(from));
+                        tr.appendChild(tdFrom);
+
+                        var tdSubject = document.createElement("td");
+                        tdSubject.appendChild(document.createTextNode(subject));
+                        tr.appendChild(tdSubject);
+
+                        var tdDate = document.createElement("td");
+                        tdDate.appendChild(document.createTextNode(date));
+                        tr.appendChild(tdDate);
+
+                        document.getElementById('gmailT').appendChild(tr);
                     }
                 });
                 
           });
             
         });
-        // var message_id = response['data']['messages'][0]['id'];
- 
-        // Retreive the actual message using the message id
-    //     gmail.users.messages.get({auth: auth, userId: 'me', 'id': message_id}, function(err, response) {
-    //         if (err) {
-    //           console.log('The API returned an error: ' + err);
-    //           return;
-    //         }
-    //     console.log(response['data']['snippet']);
-    //   });
     });
+       
+    // document.getElementById("gmailUL").appendChild(ul);
 }
