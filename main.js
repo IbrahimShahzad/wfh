@@ -16,6 +16,8 @@ app.on('ready',function(){
     // Create new window
     mainWindow = new BrowserWindow({
         // fullscreen: true,
+        width: 1920,
+        height: 1080,
         webPreferences: {
             // enable nodeIntegration [default: disabled]
             nodeIntegration: true

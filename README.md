@@ -13,7 +13,7 @@ Following is the feature-list that may be implemented in the future (marked ones
 Feature | Back-End |  Front-End
 :------------ | :------------- | :-------------
 Todo List | :heavy_check_mark: | :x:
-Unread Email | :heavy_check_mark: | :x:
+Unread Email | :heavy_check_mark: | :heavy_check_mark:
 Calendar/Schedule | :heavy_check_mark: | :x:
 Upcomming Meetings | :x: | :x:
 Creating Meetings | :x: | :x:

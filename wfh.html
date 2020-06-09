@@ -5,6 +5,8 @@
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     </head>
     <body>
+        <script src="js/gmail.js"></script>
+        <!-- <script src="js/calendar.js"></script> -->
         <nav>
             <div class="nav-wrapper">
                 <a class="brand-logo center">
@@ -16,19 +18,53 @@
         <div class="row">
             <!-- Work Column -->
             <div class="col s12 m6">
+                <!-- Mail Card -->
                 <div class="card blue-grey darken-1">
-                    <div class="card-content white-text">
-                      <span class="card-title">Card Title</span>
-                      <p>I am a very simple card. I am good at containing small bits of information.
-                      I am convenient because I require little markup to use effectively.</p>
+                    <div class="card-content white-text" >
+                      <span class="card-title">G-Mail UNREAD</span>
+                      <div>
+                        <table>
+                            <thead>
+                              <tr>
+                                  <th>From</th>
+                                  <th>Subject</th>
+                                  <th>Date</th>
+                              </tr>
+                            </thead>
+                            <tbody id='gmailT'>
+                            </tbody>
+                          </table>                          
+                      </div>
                     </div>
                     <div class="card-action">
-                      <a href="#">This is a link</a>
-                      <a href="#">This is a link</a>
+                      <a href="https://mail.google.com/mail/u/0/#inbox" target="_blank">Go to mail</a>
                     </div>
+                </div>
+                <!-- Upcomming Meetings Card -->
+                <div class="card blue-grey darken-1">
+                    <div class="card-content white-text" >
+                      <span class="card-title">Upcomming Events</span>
+                      <div>
+                        <table>
+                            <thead>
+                              <tr>
+                                  <th>From</th>
+                                  <th>Subject</th>
+                                  <th>Date</th>
+                              </tr>
+                            </thead>
+                            <tbody id='calendarT'>
+                            </tbody>
+                          </table>                          
+                      </div>
                     </div>
+                    <div class="card-action">
+                      <a href="https://mail.google.com/mail/u/0/#inbox" target="_blank">Go to mail</a>
+                    </div>
+                </div>
             </div>
-            <!-- Work Column -->
+            
+            <!-- Home Column -->
             <div class="col s12 m6">
                 <div class="card blue-grey darken-1">
                     <div class="card-content white-text">
@@ -49,22 +85,21 @@
         <script>
             const electron = require('electron');
             const {ipcRenderer} = electron;
-            
 
-//             document.addEventListener('DOMContentLoaded', function() {
-//     var elems = document.querySelectorAll('.sidenav');
-//     var instances = M.Sidenav.init(elems, options);
-//   });
 
-  // Initialize collapsible (uncomment the lines below if you use the dropdown variation)
-  // var collapsibleElem = document.querySelector('.collapsible');
-  // var collapsibleInstance = M.Collapsible.init(collapsibleElem, options);
+            var fs = require('fs');
+            var readline = require('readline');
+            var {google} = require('googleapis');
+            var SCOPES = ['https://www.googleapis.com/auth/gmail.readonly','https://www.googleapis.com/auth/calendar.readonly'];
+            var TOKEN_PATH = 'token.json';
+            var gmail = google.gmail('v1');
 
-  // Or with jQuery
-
-//   $(document).ready(function(){
-//     $('.sidenav').sidenav();
-//   });
+            // gmail shit
+            setInterval(function() {
+                runGmail();
+                
+                // runCalendar();
+            },5*60*1000); // Refresh after every 5 minutes = 5*60*1000
         </script>
     </body>
 </html>

@@ -1,20 +1,22 @@
-const fs = require('fs');
-const readline = require('readline');
-const {google} = require('googleapis');
+// const fs = require('fs');
+// const readline = require('readline');
+// const {google} = require('googleapis');
 
-// If modifying these scopes, delete token.json.
-const SCOPES = ['https://www.googleapis.com/auth/calendar.readonly'];
+// If modifying these CCSCOPES, delete token.json.
+// const CSCOPES = ['https://www.googleapis.com/auth/calendar.readonly'];
 // The file token.json stores the user's access and refresh tokens, and is
 // created automatically when the authorization flow completes for the first
 // time.
-const TOKEN_PATH = 'calendarToken.json';
-
-// Load client secrets from a local file.
-fs.readFile('credentials/calendarCredentials.json', (err, content) => {
-  if (err) return console.log('Error loading client secret file:', err);
-  // Authorize a client with credentials, then call the Google Calendar API.
-  authorize(JSON.parse(content), listEvents);
-});
+// const CALENDAR_TOKEN_PATH = 'calendarToken.json';
+runCalendar();
+function runCalendar(){
+  // Load client secrets from a local file.
+  fs.readFile('credentials/calendarCredentials.json', (err, content) => {
+    if (err) return console.log('Error loading client secret file:', err);
+    // Authorize a client with credentials, then call the Google Calendar API.
+    authorize(JSON.parse(content), listEvents);
+  });
+}
 
 /**
  * Create an OAuth2 client with the given credentials, and then execute the
@@ -28,7 +30,7 @@ function authorize(credentials, callback) {
       client_id, client_secret, redirect_uris[0]);
 
   // Check if we have previously stored a token.
-  fs.readFile(TOKEN_PATH, (err, token) => {
+  fs.readFile(CALENDAR_TOKEN_PATH, (err, token) => {
     if (err) return getAccessToken(oAuth2Client, callback);
     oAuth2Client.setCredentials(JSON.parse(token));
     callback(oAuth2Client);
@@ -57,9 +59,9 @@ function getAccessToken(oAuth2Client, callback) {
       if (err) return console.error('Error retrieving access token', err);
       oAuth2Client.setCredentials(token);
       // Store the token to disk for later program executions
-      fs.writeFile(TOKEN_PATH, JSON.stringify(token), (err) => {
+      fs.writeFile(CALENDAR_TOKEN_PATH, JSON.stringify(token), (err) => {
         if (err) return console.error(err);
-        console.log('Token stored to', TOKEN_PATH);
+        console.log('Token stored to', CALENDAR_);
       });
       callback(oAuth2Client);
     });
