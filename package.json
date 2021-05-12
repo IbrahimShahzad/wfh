@@ -16,7 +16,7 @@
     "electron": "^9.0.2",
     "electron-packager": "^14.2.1",
     "imap": "^0.8.19",
-    "nodemailer": "^6.4.8"
+    "nodemailer": "^6.4.16"
   },
   "dependencies": {
     "cheerio": "^1.0.0-rc.3",
