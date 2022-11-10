@@ -13,7 +13,7 @@
   "author": "IbrahimShahzad",
   "license": "MIT",
   "devDependencies": {
-    "electron": "^9.0.2",
+    "electron": "^18.3.7",
     "electron-packager": "^14.2.1",
     "imap": "^0.8.19",
     "nodemailer": "^6.4.8"
